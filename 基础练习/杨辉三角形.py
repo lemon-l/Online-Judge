@@ -40,7 +40,7 @@ def printL(L): # 打印
  
  
 L = [1]
-row = int(input("输入行数："))
+row = int(input())
 for x in range(row):
     printL(L)
     L = createL(L)
