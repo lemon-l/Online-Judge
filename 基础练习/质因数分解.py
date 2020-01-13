@@ -28,9 +28,27 @@ def is_Primes(a):
     for i in range(2, a // 2 + 1):
         if(a % i == 0):
             return False
+            break
     return True
+'''
+如果一个数本身自己就是素数，则可以表示成 n = n;
+如果是个偶数，则可以表示成 n = 2 * k
+如果是个奇数，则从3开始遍历，寻找他的质因数
 
+如果用传统的.format方法，得重置n次，显然一点都不合理，所以可以巧用循环来实现
+'''
 for i in range(start, end + 1):
     if(is_Primes(i)):
-        print("{1}")
-    
+        print("{0}={1}".format(i, i))
+    else:
+        print('{0}='.format(i),end='')
+        l = []
+        while i > 1:
+            for j in range(2, i+1):
+                if i % j == 0:
+                    i //= j
+                    l.append(str(j))
+                    break
+        print("*".join(l))
+        
+
