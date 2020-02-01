@@ -20,4 +20,30 @@ Output
     输出样例:
     1 3
 '''
+'''
+    重点是好芯片比坏芯片多
+    如果忽略这个问题就很难解决，本人开始你就不幸忽略了。。。
+    既然好芯片比坏芯片多，那么我们只需记录每一列0的个数就行了，若个数超过n/2，则此芯片为坏芯片
+    一个chip列表来记录芯片的好坏
+'''
 n = int(input())
+arr = [[] for i in range(n)]
+judge = [True for i in range(n)]
+
+# 先将数组写入列表里面
+for i in range(n):
+    list1 = input().split()
+    for j in range(n):
+        arr[i].append(int(list1[j]))
+
+for i in range(n):
+    count = 0
+    for j in range(n):
+        if(arr[j][i] == 0):
+            count += 1
+    if(count > n / 2):
+        judge[i] = False
+
+for i in range(n):
+    if(judge[i]):
+        print(i + 1, end=' ')
